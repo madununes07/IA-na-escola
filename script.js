@@ -10,11 +10,19 @@ const perguntas = [
     alternativas: [
         {
             texto:  "A tecnologia pode trazer benefícios à saúde mental",
-            afirmacao: "A tecnologia traz benefícios para a saúde mental, facilitando os estudos, a comunicação e o acesso à informação."
+            afirmacao:[ 
+                "A tecnologia traz benefícios para a saúde mental, facilitando os estudos, a comunicação e o acesso à informação.",
+                "A tecnologia também pode facilitar o acesso a informações e recursos educativos."
+            ]
+
         },
         {
            texto: "A tecnologia pode prejudicar a saúde mental",
-           afirmacao: "O uso excessivo da tecnologia prejudica a saúde mental, podendo causar ansiedade, estresse e dependência."
+           afirmacao: [
+            "O uso excessivo da tecnologia prejudica a saúde mental, podendo causar ansiedade, estresse e dependência.",
+            "O uso excessivo de dispositivos pode afetar o bem-estar e a qualidade do sono." 
+           ]
+
         }
     ]
 },
@@ -23,12 +31,21 @@ const perguntas = [
     alternativas: [
         {
              texto: "As redes sociais podem ser positivas",
-             afirmacao: "As redes sociais apresentam benefícios, pois aproximam as pessoas e contribuem para o aprendizado."
+             afirmacao: [
+                "As redes sociais apresentam benefícios, pois aproximam as pessoas e contribuem para o aprendizado.",
+                "As redes sociais também podem ajudar na comunicação e na troca de conhecimentos."
+             ]
+
 
         },
         {
             texto: "AS redes sociais podem ser prejudicais",
-            afirmacao:  "O uso excessivo das redes sociais prejudica a autoestima e pode afetar negativamente a saúde mental."
+            afirmacao: [
+
+             "O uso excessivo das redes sociais prejudica a autoestima e pode afetar negativamente a saúde mental.",
+             "O uso exagerado das redes sociais pode causar distração e diminuir a concentração."
+            ]
+
         }
        
     ]
@@ -38,12 +55,21 @@ const perguntas = [
     alternativas: [
         {
             texto: "A inteligência artificial pode ser uma alhiada",
-            afirmacao: "A inteligência artificial é uma importante aliada nos estudos, auxiliando na pesquisa e na organização das informações."
+            afirmacao: [
+                "A inteligência artificial é uma importante aliada nos estudos, auxiliando na pesquisa e na organização das informações.",
+                "A inteligência artificial pode ajudar os estudantes a compreender conteúdos mais facilmente."
+            ]
+
 
        },
        {
         texto:  "A inteligência artificial exige cuidado",
-        afirmacao:  "O uso excessivo da inteligência artificial pode gerar dependência e diminuir a autonomia nos estudos."
+        afirmacao: [
+
+        "O uso excessivo da inteligência artificial pode gerar dependência e diminuir a autonomia nos estudos.",
+        "É importante utilizar a inteligência artificial com responsabilidade e senso crítico."
+        ]
+
     }
        
     ]
@@ -53,12 +79,22 @@ const perguntas = [
     alternativas: [
         {
             texto:"O uso equilibrado da tecnologia faz bem",
-            afirmacao: "O uso equilibrado da tecnologia contribui para uma rotina mais saudável e permite aproveitar seus benefícios."
+            afirmacao: [
+
+            "O uso equilibrado da tecnologia contribui para uma rotina mais saudável e permite aproveitar seus benefícios.",
+            "Equilibrar o tempo de tela com atividades físicas e momentos de descanso contribui para uma rotina saudável."
+            ]
+
 
        },
        {
         texto:  "O excesso de telas faz mal",
-        afirmacao:  "O excesso de tempo diante das telas prejudica o sono e a capacidade de concentração."
+        afirmacao: [
+
+         "O excesso de tempo diante das telas prejudica o sono e a capacidade de concentração.",
+         "Criar limites para o uso da tecnologia pode melhorar a concentração e o bem-estar."
+        ]
+
     }
        
 
@@ -69,18 +105,23 @@ const perguntas = [
     alternativas: [    
         {
             texto:   "Usar a tecnologi com equilibrio",
-            afirmacao: "O uso equilibrado da tecnologia permite aproveitar seus benefícios sem prejudicar a saúde mental."
+            afirmacao: [
+                "O uso equilibrado da tecnologia permite aproveitar seus benefícios sem prejudicar a saúde mental.",
+                "Estabelecer limites de tempo e fazer pausas ajuda a manter uma relação saudável com a tecnologiaa." 
+            ]
 
        },
        {
         texto: "Continuar usando sem limites",
-        afirmacao:  "O uso excessivo da tecnologia prejudica a saúde mental e pode causar problemas como estresse, ansiedade e falta de concentração."
-    }
-       
-    ]
+        afirmacao:  "O uso excessivo da tecnologia prejudica a saúde mental e pode causar problemas como estresse, ansiedade e falta de concentração.",
+        afirmacao: "Passar muito tempo conectado pode atrapalhar o sono, os estudos e a convivência com outras pessoas"
+
+       }
+    ]    
+
 }
 ];
-
+      
 let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
@@ -117,5 +158,10 @@ function mostraResultado() {
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
 }
-
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
+historiaFinal += afirmacoes + “ “;
+atual++;
+mostraPergunta();
+}
 mostraPergunta();
