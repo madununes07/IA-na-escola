@@ -10,7 +10,7 @@ const perguntas = [
     alternativas: [
         {
             texto:  "A tecnologia pode trazer benefícios à saúde mental",
-            afirmacao:[ 
+            afirmacao:[
                 "A tecnologia traz benefícios para a saúde mental, facilitando os estudos, a comunicação e o acesso à informação.",
                 "A tecnologia também pode facilitar o acesso a informações e recursos educativos."
             ]
@@ -20,7 +20,7 @@ const perguntas = [
            texto: "A tecnologia pode prejudicar a saúde mental",
            afirmacao: [
             "O uso excessivo da tecnologia prejudica a saúde mental, podendo causar ansiedade, estresse e dependência.",
-            "O uso excessivo de dispositivos pode afetar o bem-estar e a qualidade do sono." 
+            "O uso excessivo de dispositivos pode afetar o bem-estar e a qualidade do sono."
            ]
 
         }
@@ -107,7 +107,7 @@ const perguntas = [
             texto:   "Usar a tecnologi com equilibrio",
             afirmacao: [
                 "O uso equilibrado da tecnologia permite aproveitar seus benefícios sem prejudicar a saúde mental.",
-                "Estabelecer limites de tempo e fazer pausas ajuda a manter uma relação saudável com a tecnologiaa." 
+                "Estabelecer limites de tempo e fazer pausas ajuda a manter uma relação saudável com a tecnologiaa."
             ]
 
        },
@@ -121,13 +121,13 @@ const perguntas = [
 
 }
 ];
-      
-let atual = 0;
+     
+let atual = 0; 
 let perguntaAtual;
 let historiaFinal = "";
 
 function mostraPergunta() {
-    if (atual >= perguntas.length) {
+    if(atual >= perguntas.length){
         mostraResultado();
         return;
     }
@@ -138,30 +138,25 @@ function mostraPergunta() {
 }
 
 function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativa = document.createElement("button");
-        botaoAlternativa.textContent = alternativa.texto;
-        botaoAlternativa.addEventListener("click", () => respostaSelecionada(alternativa));
-        caixaAlternativas.appendChild(botaoAlternativa);
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
 
 function respostaSelecionada(opcaoSelecionada){
-    const afirmacao = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacao + "  ";
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
 }
 
-function mostraResultado() {
+function mostraResultado(){
     caixaPerguntas.textContent = "Em 2049...";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.textContent = ""; 
 }
-function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
-historiaFinal += afirmacoes + “ “;
-atual++;
-mostraPergunta();
-}
+
 mostraPergunta();
